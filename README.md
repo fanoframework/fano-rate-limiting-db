@@ -1,6 +1,9 @@
-# SCGI Fano Web Framework Skeleton Application
+# Rate-limiting with Fano Framework
 
-[SCGI](https://python.ca/scgi/protocol.txt) web application skeleton using Fano Framework, Pascal web application framework
+[SCGI](https://python.ca/scgi/protocol.txt) web application using Fano Framework, Pascal web application framework to demonstrates how to use rate limit middleware.
+[Learn more](https://fanoframework.github.io/utilities/rate-limit/)
+
+[![Rate limiting video tutorial](https://fanoframework.github.io/assets/images/video-preview.png)](https://youtu.be/dfmArIN4s-o "Rate limiting video tutorial")
 
 This project is generated using [Fano CLI](https://github.com/fanoframework/fano-cli)
 command line tools to help scaffolding web application using Fano Framework.
@@ -12,6 +15,7 @@ command line tools to help scaffolding web application using Fano Framework.
 - Web Server ([Apache with mod_proxy_scgi](https://httpd.apache.org/docs/current/mod/mod_proxy_scgi.html), nginx)
 - [Fano CLI](https://github.com/fanoframework/fano-cli)
 - Web Server (Apache, nginx)
+- MySQL
 - Administrative privilege for setting up virtual host
 
 ## Installation
@@ -19,22 +23,24 @@ command line tools to help scaffolding web application using Fano Framework.
 ### TLDR
 Make sure all requirements are met. Run
 ```
-$ git clone https://your-repo-hostname/fano-app.git --recursive
-$ cd fano-app
+$ git clone https://github.com/fanoframework/fano-rate-limiting-db.git --recursive
+$ cd fano-rate-limiting-db
 $ ./tools/config.setup.sh
 $ ./build.sh
-$ sudo fanocli --deploy-scgi=fano-app.fano
+$ sudo fanocli --deploy-scgi=db-rate-limit.fano
 $ ./bin/app.cgi
 ```
+
+### Database setup
 Setup database by running
 ```
-$ DB_ADMIN=[root] DB_USER=[username] DB_USER=[user password]./tools/db.setup.sh
+$ DB_ADMIN=[root] DB_USER=[username] DB_USER=[user password] ./tools/db.setup.sh
 ```
 Command above create database with name same as username and grant username all privileges on database and create table `rates`.
 
 Edit `config/config.json` and set database credential to match yours.
 
-Open internet browser and go to `http://fano-app.fano`. You should see application.
+Open internet browser and go to `http://db-rate-limit.fano`. You should see application.
 
 ### Free Pascal installation
 
@@ -46,7 +52,7 @@ If you see something like `Free Pascal Compiler version 3.0.4`,  you are good to
 
 Clone this repository
 
-    $ git clone https://your-repo-hostname/fano-app.git --recursive
+    $ git clone https://github.com/fanoframework/fano-rate-limiting-db.git --recursive
 
 `--recursive` is needed so git also pull [Fano](https://github.com/fanoframework/fano) repository.
 
