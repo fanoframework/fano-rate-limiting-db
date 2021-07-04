@@ -1,5 +1,5 @@
 {
-    "appName" : "MyApp" ,
+    "appName" : "My Rate Limit with DB" ,
     "db" : {
         "mysql" : {
             "version" : "mysql 5.7",
