@@ -7,4 +7,20 @@
  *------------------------------------------------------------- *)
 
 {---put your main dependencies registration here---}
-{ container.add('db', TMySqlDbFactory.create()); }
+container.add(
+    'db',
+    TMySqlDbFactory.create(
+        config.getString('db.mysql.version'),
+        config.getString('db.mysql.host'),
+        config.getString('db.mysql.database'),
+        config.getString('db.mysql.username'),
+        config.getString('db.mysql.password'),
+        config.getInt('db.port')
+    )
+);
+
+// container.add(
+//     'db',
+//     TOdbcDbFactory.create()
+//         .database('db-rate')
+// );

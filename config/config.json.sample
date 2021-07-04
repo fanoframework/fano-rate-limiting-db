@@ -1,1 +1,21 @@
-{ "appName" : "MyApp" }
+{
+    "appName" : "MyApp" ,
+    "db" : {
+        "mysql" : {
+            "version" : "mysql 5.7",
+            "host" : "localhost",
+            "port" : 3306,
+            "username" : "dbrate",
+            "password" : "dbrate",
+            "database" : "dbrate"
+        }
+    },
+    "rateLimiter" : {
+        "db" : {
+            "tableName" : "rates",
+            "idColumnName" : "id",
+            "operationColumnName" : "operation",
+            "resetTimestampColumnName" : "reset_timestamp"
+        }
+    }
+}

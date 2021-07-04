@@ -26,6 +26,14 @@ $ ./build.sh
 $ sudo fanocli --deploy-scgi=fano-app.fano
 $ ./bin/app.cgi
 ```
+Setup database by running
+```
+$ DB_ADMIN=[root] DB_USER=[username] DB_USER=[user password]./tools/db.setup.sh
+```
+Command above create database with name same as username and grant username all privileges on database and create table `rates`.
+
+Edit `config/config.json` and set database credential to match yours.
+
 Open internet browser and go to `http://fano-app.fano`. You should see application.
 
 ### Free Pascal installation

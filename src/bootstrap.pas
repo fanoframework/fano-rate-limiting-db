@@ -44,7 +44,8 @@ uses
     (*! -------------------------------
      *   controllers factory
      *----------------------------------- *)
-    {---- put your controller factory here ---};
+    {---- put your controller factory here ---},
+    HomeControllerFactory;
 
 
     function TAppServiceProvider.buildAppConfig(const container : IDependencyContainer) : IAppConfiguration;
@@ -59,6 +60,7 @@ uses
         result := container['config'] as IAppConfiguration;
 
     end;
+
     function TAppServiceProvider.buildDispatcher(
         const container : IDependencyContainer;
         const routeMatcher : IRouteMatcher;
@@ -79,7 +81,10 @@ uses
     end;
 
     procedure TAppServiceProvider.register(const container : IDependencyContainer);
+    var config : IAppConfiguration;
     begin
+        config := container['config'] as IAppConfiguration;
+
         {$INCLUDE Dependencies/dependencies.inc}
     end;
 
